@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    {% block head %} {% endblock %}
+</head>
+<body>
+    {% block body %}
+<nav class="heade">
+<div class="divnav">
+<p class="navi"><a href="{{url_for('create_post')}}">General</a></p>
+{% if current_user.is_authenticated %}
+    <p class="navi"><a href="{{url_for('profile')}}">Profile</a></p>
+    <p class="navi"><a href="{{url_for('editprofile')}}">Edit profile</a></p>
+
+    <p class="navi"><a href="{{url_for('changpw')}}">Change password</a></p>
+    <p class="navi"><a href="{{url_for('logout')}}">Logout</a></p>
+{% else %}
+<p class="navi"><a href="{{url_for('reg')}}">Registrate</a></p>
+<p class="navi"><a href='{{ url_for("indexx")}}'>Login</a></p>
+
+</div>
+{% endif %}
+</nav>
+<br/>
+
+ {% endblock %}
+</body>
+</html>

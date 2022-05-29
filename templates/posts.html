@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+
+
+
+
+{% block head %}
+
+<title>Posts</title> 
+{% endblock %}
+
+{% block body %}
+{{ super() }}
+
+<div class="all">
+<div class="cent">
+<h1>All Posts</h1>
+
+    <hr>
+
+{% if current_user.is_authenticated %}
+    <h2>Create New Blog Post:</h2>
+    <form action='{{url_for("create_post")}}' method='POST'>
+        Title: <input type='text' name='title' id='title'>
+        <br>
+        <!--Author: <input type='text' name='author' id='author'>
+        <br>-->
+        Post: <input type='text' name='content' id='content'>
+        <br>
+        Allow HTML in post:
+        <input type="checkbox" name='htmlrender' value="checked" >
+        <br/>
+
+        <input type='submit' value='Post'>
+    </form>
+    <hr>
+{% else %}
+    <p>Log in to write posts</p>
+    <a href='{{ url_for("indexx")}}'>Log in</a>
+{% endif %}
+<h3>Crucial posts:</h3>
+<div class="pin">
+
+    {% for i in post %}
+<div class="list_post">
+<a id='open' href='/post/open/{{i.id}}' class="opt">
+        <h4 class="ele">{{ i.title }}</h4></a>
+
+            {% if i.author %}
+                <h4 class="ele">By: <a href="/profilee/{{i.id}}">{{ i.author }}</a></h4>
+            {% else %}
+                <h4 class="ele">By: N/A</h4>
+            {% endif %}
+
+        <p id='time'>{{ i.date_posted }}   </p>
+</div>
+    {% endfor %}
+</div>
+<h3>Other posts:</h3>
+<div class="unpin">
+
+    {% for j in posts %}
+<div class="list_post">
+<a id='open' href='/post/open/{{j.id}}'>
+        <h4 class="ele">{{ j.title }}</h4></a>
+
+        {% if j.author %}
+            <h4  class="ele">By:<a href="/profilee/{{j.id}}">{{ j.author }}</a> </h4>
+        {% else %}
+            <h4  class="ele">By: N/A</h4>
+        {% endif %}
+        <p id='time'  class="ele">{{ j.date_posted }}</p>
+
+</div>
+
+
+
+
+
+
+
+
+    {% endfor %}
+        </div>
+</div>
+
+</div>
+
+
+<script>
+
+
+
+</script>
+{% endblock %}

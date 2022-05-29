@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>{{ post.title }}</title>
+{% endblock %}
+
+{%  block body %}{{ super() }}
+
+<div class="all">
+<div class="cent">
+<p name ='title' id='title'>Title: {{ post.title }}</p>
+<br/>
+
+{% if post.htmlrender %}
+    <div>Content: {{ post.content | safe }}</div>
+{% else %}
+    <div>Content: {{ post.content }}</div>
+{% endif %}
+<br/>
+<p name = 'author' id='author'>Author : {{ post.author }}</p>
+
+{% if current_user.role==1 %}
+<a href='/posts/delete/{{post.id}}' class="opt">Delete</a>
+<a href='/posts/edit/{{post.id}}' class="opt">Edit</a>
+
+<a id="stick" href="/posts/stick/{{post.id}}" class="opt">Un/Stick</a>
+{% elif creator.uid== current_user.uid %}
+<a href='/posts/delete/{{post.id}}' class="opt">Delete</a>
+<a href='/posts/edit/{{post.id}}' class="opt">Edit</a>
+{% endif %}
+</div>
+<form action='/create/comment/{{post.id}}' method="POST">
+<input type="text" name="comment" id="content" class="com"><br/><br/>
+<input type="submit" name="submit">
+
+
+</form><br/>
+<form action="/post/like/{{post.id}}" method="post">
+Like:
+<input type="submit" name="like" id="like">
+</form>
+
+
+
+
+<p>Number of likes: {{ count_likes.count() }}</p>
+{%  for i in comments %}
+<hr>
+{% if i.cauthor %}
+<p>{{i.cauthor}}
+</p>{% else %}
+
+<P>none</P>
+{% endif %}
+<p>{{i.ccontent}}
+</p><hr>
+{% endfor %}
+
+</div>
+{% endblock %}
+
+<script>
+
+</script>

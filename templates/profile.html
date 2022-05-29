@@ -1,0 +1,83 @@
+
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block head %}
+<title>{{query.fname}}</title>
+<style>
+h3{
+padding:10px;
+
+}
+
+.list_post{
+display: flex;
+justify-content: space-between;
+
+border:1px black solid;
+padding-left: 3px;
+padding-right: 3px;
+}
+
+.ele{
+margin-left: 2px;
+margin-right: 2px;
+margin: 2px;
+}
+
+</style>
+{% endblock %}
+
+{% block body %}
+{{ super() }}
+
+<div class=" d-flex p-2 justify-content-center text-center">
+<div class="align-items-center">
+<div class="form-signin border border-dark p-5 rounded-3">
+    <h3>UID:</h3>
+    {{ query.uid}}
+    <h3>First Name:</h3>
+    {{ query.fname}}
+    <h3>Second Name:</h3>
+
+    {{ query.sname}}
+    <h3>Email address:</h3>
+
+    {{ query.email}}
+ 
+
+    <h3>Date of birth:</h3>
+    {{ query.birth.strftime('%Y-%m-%d')  }}
+    <h3>Date of registration:</h3>
+    {{ query.date_registrated.strftime('%Y-%m-%d') }}
+    <h3>CNIC:</h3>
+    {{ query.cnic }}
+
+</div></div></div>
+
+<div class="all">
+<h3>Posts of this member:</h3>
+<div class="cent">
+{% for i in hisposts %}
+<div class="list_post">
+<a id='open' href='/post/open/{{i.id}}' class="opt">
+        <h4 class="ele">{{ i.title }}</h4></a>
+
+            {% if i.author %}
+                <h4 class="ele">By: <a href="/profilee/{{i.id}}">{{ i.author }}</a></h4>
+            {% else %}
+                <h4 class="ele">By: N/A</h4>
+            {% endif %}
+
+
+
+
+        <p id='time'>{{ i.date_posted }}   </p>
+</div>
+    {% endfor %}
+</div></div>
+<!--
+
+
+-->
+{% endblock %}

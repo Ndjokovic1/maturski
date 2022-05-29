@@ -1,0 +1,36 @@
+
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+
+{% block head %}
+<title>Login</title>
+{% endblock %}
+
+
+{% block body %}{{ super() }}
+
+    <div class=" d-flex p-2 justify-content-center text-center">
+    <div class="align-items-center">
+<form class="form-signin border border-dark p-5 rounded-3" method="POST" action="{{ url_for('indexx')}}">
+        <h2 class="form-signin-heading">Please log in</h2>
+
+          {{ form.csrf_token }}
+          {{form.email.label}}<br/>
+          {{form.email}}
+            {% for error in form.email.errors %}
+              <li style="color:black";>{{ error }}</li>
+            {% endfor %}
+<br/><br/>
+          {{form.password.label}}<br/>
+          {{form.password}}
+            {% for error in form.password.errors %}
+              <li style="color:black";>{{ error }}</li>
+            {% endfor %}
+<br/><br/>
+        <button class="btn btn-lg btn-outline-primary btn-block" type="submit" id="sub" value='Submit'>Sign in</button>
+      </form>
+</div>
+    </div>
+            {% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{{ super() }}
+
+Email or CNIC is already connected to someones account, please try again. <a href="{{ url_for('reg') }}">Try again</a>
+
+
+
+{% endblock %}

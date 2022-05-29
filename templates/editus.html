@@ -1,0 +1,66 @@
+
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block head %}
+<style>
+
+#sub{
+width:182px;
+
+}
+
+
+</style>
+<title>Log in</title>
+{% endblock %}
+
+
+{% block body %}{{ super() }}
+
+<body>
+
+
+    <div class=" d-flex p-2 justify-content-center text-center">
+    <div class="align-items-center">
+      <form class="form-signin border border-dark p-5 rounded-3" method="POST" action="{{ url_for('pro')}}">
+        <h2 class="form-signin-heading">Edit Profile</h2>
+          {{ form.csrf_token }}
+
+          {{form.fname.label}}<br/>
+          {{form.fname}}
+            {% for error in form.fname.errors %}
+              <li style="color:black";>{{ error }}</li>
+            {% endfor %}
+          <br/><br/>
+          {{form.sname.label}}<br/>
+          {{form.sname}}
+            {% for error in form.sname.errors %}
+              <li style="color:black";>{{ error }}</li>
+            {% endfor %}
+          <br/><br/>
+          {{form.email.label}}<br/>
+          {{form.email}}
+            {% for error in form.email.errors %}
+              <li style="color:black";>{{ error }}</li>
+            {% endfor %}
+          <br/><br/>
+          {{form.birth.label}}<br/>
+          {{form.birth}}
+            {% for error in form.birth.errors %}
+              <li style="color:black";>{{ error }}</li>
+            {% endfor %}
+          <br/><br/>
+          {{form.cnic.label}}<br/>
+          {{form.cnic}}
+            {% for error in form.cnic.errors %}
+              <li style="color:black";>{{ error }}</li>
+            {% endfor %}
+          <br/><br/>
+<br/><br/>
+        <button class="btn btn-lg btn-outline-primary btn-block" type="submit" id="sub" value='Submit'>Submit</button>
+      </form>
+</div>
+    </div></body>
+    
+{% endblock %}

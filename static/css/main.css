@@ -1,0 +1,107 @@
+.body{
+
+background-color: white;}
+
+
+.cent {
+color:black;
+font-size: 23px;
+align-items: center;
+}
+
+
+
+.pin{
+background-color: lightgreen;
+}
+
+.unpin{
+background-color: white;
+}
+
+.container{
+border:2px black solid;
+border-radius: 25px;
+}
+
+#st{
+  width: fit-content;
+  text-align: center;
+  background-color: white;
+  border:1px black solid;
+  margin-left: 20px;
+  border-radius: 10px;
+  justify-content: center;
+  padding: 0.5%;
+position: absolute;
+  
+}
+
+.opt{
+width:fit-content;
+font-weight: bold;
+font-size: small;
+z-index: 2;
+
+}
+
+
+.all{
+width:80%;
+margin:auto;
+padding:2%;
+border:1px solid black;
+
+
+}
+
+.com{
+width:100%;
+padding:20px;
+
+}
+
+
+.list_post{
+display: flex;
+justify-content: space-between;
+
+border:1px black solid;
+padding-left: 3px;
+padding-right: 3px;
+}
+
+.ele{
+margin-left: 2px;
+margin-right: 2px;
+margin: 2px;
+}
+
+.header{
+display: flex;
+justify-content: center;
+
+}
+
+.navi{
+padding:10px;
+font-size: 20px;
+}
+
+nav{
+width:80%;
+margin:auto;
+padding:2%;
+border:1px solid black;
+height: auto;
+display:flex;
+justify-content: center;
+flex-direction: row;
+}
+
+.divnav{
+display:flex;
+justify-content: center;
+flex-direction: row;
+
+}

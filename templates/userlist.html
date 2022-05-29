@@ -1,0 +1,16 @@
+
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block head %}
+
+<title>User list</title>
+{% endblock %}
+{% block body %}
+
+
+    {% for post in posts %}
+        <h2>{{ post.email }}</h2>
+        <p>{{post.password}}</p>
+{% endfor %}
+
+{% endblock %}
